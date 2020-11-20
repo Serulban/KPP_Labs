@@ -1,0 +1,56 @@
+<style>
+* {
+	text-align: center;
+	background-color: #FFFAFA;
+}
+
+input {
+	text-align: left;
+}
+
+select {
+	background-color: #008B8B;
+	color: black;
+	text-align: center;
+	padding: 10px;
+}
+
+p {
+	color: #008000;
+}
+
+h1 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  max-width: 320px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  color: #465457;
+  background-color: #FFC0CB;
+}
+
+</style>
+
+<h1>My Ruby on Rails Calculator</h1>
+
+<%= form_for :calculator, url: { action: :new }, method: :get do |f| %>
+  <%= number_field_tag :a, params[:a] %>
+  <br>
+  <br>
+  <%= select_tag :operation, options_for_select([['+', :sum], ['-', :subtr], ['x', :mult], ['/', :div]], params[:operation]) %>
+  
+  <br>
+  <br>
+  <%= number_field_tag :b, params[:b] %>
+  
+  <br>
+  <br>
+  <%= f.submit 'Click on me to take result' %>
+<% end %>
+
+  <br>
+  <br>
+<% unless @result.nil? %>
+  <p> Result = <%= @result %> </p>
+<% end %>
